@@ -84,14 +84,14 @@ const toggleMenu = () => {
   cursor: pointer;
 }
 
-/* Контент */
+
 .main-content {
   padding: 2rem 1rem;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-/* Адаптив */
+
 @media (max-width: 768px) {
   .nav-links {
     flex-direction: column;

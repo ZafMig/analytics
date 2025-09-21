@@ -281,5 +281,5 @@ onMounted(() => {
   .status-filter select {
     width: 100%;
   }
-
+}
 </style>

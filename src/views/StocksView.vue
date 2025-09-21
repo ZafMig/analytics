@@ -200,7 +200,7 @@ onMounted(fetchData)
   line-height: 1.2;
 }
 
-/* Адаптив */
+
 @media (max-width: 768px) {
   .stats-row {
     gap: 1rem;
