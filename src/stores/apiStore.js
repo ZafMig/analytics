@@ -2,13 +2,13 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 import axios from "axios";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
-
-const API_KEY = 'E6kUTYrYwZq2tN4QEtyzsbEBk3ie'
+// Базовый URL берём из переменных окружения
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_KEY = 'E6kUTYrYwZq2tN4QEtyzsbEBk3ie';
 
 export const useApiStore = defineStore('api', () => {
 
-    const data = ref([])
+    const data = ref([]);
     const loading = ref(false);
     const error = ref(null);
     const currentPage = ref(1);
@@ -16,33 +16,29 @@ export const useApiStore = defineStore('api', () => {
     const itemsPerPage = ref(50);
     const lastEndpoint = ref('');
 
+    // Настраиваем axios-клиент
     const apiClient = axios.create({
         baseURL: API_BASE_URL,
         params: {
             key: API_KEY
         }
-    })
-
+    });
 
     apiClient.interceptors.response.use(
         (response) => response,
-        (error) => {
-            console.error('API Request Failed:', error);
-            return Promise.reject(error);
+        (err) => {
+            console.error('API Request Failed:', err);
+            return Promise.reject(err);
         }
     );
 
     const setPage = (page) => {
-        if (page > 0) {
-            currentPage.value = page;
-        }
-    }
+        if (page > 0) currentPage.value = page;
+    };
 
     const setItemsPerPage = (limit) => {
-        if (limit > 0 && limit <= 500) {
-            itemsPerPage.value = limit;
-        }
-    }
+        if (limit > 0 && limit <= 500) itemsPerPage.value = limit;
+    };
 
     const fetchEndpointData = async (endpoint, filters = {}) => {
         loading.value = true;
@@ -53,23 +49,25 @@ export const useApiStore = defineStore('api', () => {
             const params = {
                 ...filters,
                 page: currentPage.value,
-                limit: itemsPerPage.value,
-            }
+                limit: itemsPerPage.value
+            };
 
+            // Убираем пустые параметры
             Object.keys(params).forEach(key => {
                 if (params[key] === null || params[key] === undefined || params[key] === '') {
                     delete params[key];
                 }
-            })
+            });
 
             console.log('🔄 API Request:', { endpoint, params });
 
-            const response = await apiClient.get(`/api/${endpoint}`, { params });
+
+            const response = await apiClient.get(`${endpoint}`, { params });
             const responseData = response.data;
 
             console.log('✅ API Response:', responseData);
 
-            if (responseData && responseData.data) {
+            if (responseData?.data) {
                 data.value = responseData.data;
                 totalItems.value = responseData.meta?.total || 0;
             } else if (Array.isArray(responseData)) {
@@ -96,14 +94,11 @@ export const useApiStore = defineStore('api', () => {
         } finally {
             loading.value = false;
         }
-    }
+    };
 
     const refetch = () => {
-        if (lastEndpoint.value) {
-            fetchEndpointData(lastEndpoint.value);
-        }
-    }
-
+        if (lastEndpoint.value) fetchEndpointData(lastEndpoint.value);
+    };
 
     return {
         data,
@@ -113,10 +108,9 @@ export const useApiStore = defineStore('api', () => {
         totalItems,
         itemsPerPage,
         lastEndpoint,
-
         fetchEndpointData,
         setPage,
         setItemsPerPage,
         refetch
-    }
-})
+    };
+});
