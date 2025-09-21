@@ -224,4 +224,62 @@ onMounted(() => {
 .stat-card:nth-child(3) {
   border-top: 4px solid #27ae60;
 }
+
+
+@media (max-width: 768px) {
+  .stats-cards {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 1rem 0.8rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .page-header p {
+    font-size: 0.9rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .stats-cards {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .stat-card h3 {
+    font-size: 0.85rem;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .stat-percent {
+    font-size: 0.8rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .page-header p {
+    font-size: 0.85rem;
+  }
+
+  .filters-panel {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .filters-panel .filter-group,
+  .status-filter select {
+    width: 100%;
+  }
+
 </style>

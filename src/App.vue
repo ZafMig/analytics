@@ -9,6 +9,7 @@
           <router-link to="/stocks">Склады</router-link>
           <router-link to="/incomes">Доходы</router-link>
         </div>
+        <button class="nav-toggle" @click="toggleMenu">☰</button>
       </div>
     </nav>
 
@@ -19,9 +20,15 @@
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router'
+import { ref } from 'vue'
 
-const route = useRoute()
+const isMenuOpen = ref(false)
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+  const links = document.querySelector('.nav-links')
+  if (isMenuOpen.value) links.style.display = 'flex'
+  else links.style.display = 'none'
+}
 </script>
 
 <style>
@@ -33,7 +40,7 @@ const route = useRoute()
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-radius: 15px;
+  border-radius: 12px;
 }
 
 .nav-container {
@@ -44,32 +51,63 @@ const route = useRoute()
   align-items: center;
 }
 
+.nav-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 .nav-links {
   display: flex;
   gap: 0.75rem;
 }
 
 .nav-links a {
-  color: white;
+  background: #3498db;
+  color: #fff;
   text-decoration: none;
   padding: 0.6rem 1rem;
   border-radius: 6px;
   font-weight: 500;
-  transition: background-color 0.25s ease, color 0.25s ease;
-}
-
-.nav-links a {
-  background: #3498db;
-  color: #fff;
+  transition: background-color 0.25s ease;
 }
 
 .nav-links a:hover {
   background: #3d566e;
 }
 
-.main-content {
-  padding: 2rem;
+.nav-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
 
+/* Контент */
+.main-content {
+  padding: 2rem 1rem;
+  max-width: 1400px;
   margin: 0 auto;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    display: none;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 0.75rem;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 </style>

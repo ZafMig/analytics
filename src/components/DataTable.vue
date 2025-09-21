@@ -140,21 +140,20 @@ const formatValue = (value, type) => {
 
 <style scoped>
 .data-table-container {
-  margin: 2rem auto;
-
+  margin: 1rem;
   border-radius: 12px;
-  background: #ffffff;
+  background: #fff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   overflow: hidden;
 }
 
-/* Состояния */
+
 .loading-state, .error-state, .empty-state {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1.5rem;
   text-align: center;
   color: #555;
 }
@@ -167,7 +166,7 @@ const formatValue = (value, type) => {
 
 .retry-btn {
   margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
+  padding: 0.5rem 1rem;
   background: #007bff;
   border: none;
   border-radius: 8px;
@@ -181,9 +180,15 @@ const formatValue = (value, type) => {
   background: #0056b3;
 }
 
-/* Таблица */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .data-table {
   width: 100%;
+  min-width: 600px;
   border-collapse: separate;
   border-spacing: 0;
   font-size: 0.95rem;
@@ -193,7 +198,7 @@ const formatValue = (value, type) => {
   background: #f5f7fa;
   font-weight: 600;
   color: #2c3e50;
-  padding: 1rem;
+  padding: 0.8rem;
   text-align: left;
   border-bottom: 2px solid #e1e5eb;
   position: sticky;
@@ -203,12 +208,12 @@ const formatValue = (value, type) => {
 }
 
 .data-table td {
-  padding: 0.9rem 1rem;
+  padding: 0.7rem;
   border-bottom: 1px solid #eaecef;
   color: #444;
 }
 
-/* Зебра */
+
 .data-table tbody tr:nth-child(odd) td {
   background: #fcfcfd;
 }
@@ -217,10 +222,29 @@ const formatValue = (value, type) => {
   border-bottom: none;
 }
 
-/* Hover */
+
 .data-table tbody tr:hover td {
   background: #f0f6ff;
   transition: background 0.2s ease;
+}
+
+
+@media (max-width: 768px) {
+  .data-table th, .data-table td {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .retry-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .data-table {
+    min-width: 400px;
+  }
 }
 </style>
 

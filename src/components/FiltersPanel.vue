@@ -129,4 +129,37 @@ watch(() => props.endpoint, (newEndpoint) => {
   background-color: #ff3742;
   transform: translateY(-1px);
 }
+
+
+@media (max-width: 768px) {
+  .filters-panel {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .filter-group input,
+  .filter-group select,
+  .reset-btn {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .reset-btn {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-group label {
+    font-size: 0.85rem;
+  }
+
+  .reset-btn {
+    font-size: 0.85rem;
+  }
+}
 </style>
+

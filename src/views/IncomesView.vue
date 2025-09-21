@@ -215,4 +215,62 @@ onMounted(() => {
   border-color: #3498db;
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
 }
+
+
+@media (max-width: 768px) {
+  .income-stats {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+
+  .income-stats .stat-card {
+    padding: 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .page-header p {
+    font-size: 0.9rem;
+  }
+
+  .status-filter {
+    padding: 1rem;
+  }
+
+  .status-filter select {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .income-stats {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .income-stats .stat-card {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .page-header p {
+    font-size: 0.85rem;
+  }
+
+  .status-filter h4 {
+    font-size: 1rem;
+  }
+
+  .status-filter select {
+    font-size: 0.9rem;
+  }
+}
+
 </style>

@@ -217,7 +217,7 @@ watch(() => props.itemsPerPage, (newValue) => {
   background: white;
 }
 
-/* Адаптивность */
+
 @media (max-width: 768px) {
   .pagination-controls {
     flex-direction: column;

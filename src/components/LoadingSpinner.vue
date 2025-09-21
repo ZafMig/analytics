@@ -23,4 +23,20 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+@media (max-width: 768px) {
+  .spinner {
+    width: 30px;
+    height: 30px;
+    border-width: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .spinner {
+    width: 25px;
+    height: 25px;
+    border-width: 2.5px;
+  }
+}
 </style>
