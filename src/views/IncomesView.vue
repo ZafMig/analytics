@@ -109,8 +109,8 @@ const averagePerIncome = computed(() => {
 
 watch(apiData, (newData) => {
   if (newData.length > 0) {
-    console.log('📊 Sales data structure:', newData[0])
-    console.log('🔑 Sales available keys:', Object.keys(newData[0]))
+    console.log(' data structure:', newData[0])
+    console.log('available keys:', Object.keys(newData[0]))
   }
 })
 

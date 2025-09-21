@@ -2,7 +2,8 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 import axios from "axios";
 
-
+const API_BASE_URL = 'http://109.73.206.144:6969'
+const API_KEY = 'E6kUTYrYwZq2tN4QEtyzsbEBk3ie'
 
 export const useApiStore = defineStore('api', () => {
 
@@ -14,27 +15,13 @@ export const useApiStore = defineStore('api', () => {
     const itemsPerPage = ref(50);
     const lastEndpoint = ref('');
 
-    // Получаем настройки из environment variables
-    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
-    const API_KEY = import.meta.env.VITE_API_KEY
-    const API_TIMEOUT = parseInt(import.meta.env.VITE_API_TIMEOUT) || 10000
-
-    // Валидация обязательных переменных
-    if (!API_BASE_URL) {
-        throw new Error('VITE_API_BASE_URL is not defined in environment variables')
-    }
-
-    if (!API_KEY) {
-        throw new Error('VITE_API_KEY is not defined in environment variables')
-    }
-
     const apiClient = axios.create({
         baseURL: API_BASE_URL,
-        timeout: API_TIMEOUT,
         params: {
             key: API_KEY
         }
     })
+
 
     apiClient.interceptors.response.use(
         (response) => response,

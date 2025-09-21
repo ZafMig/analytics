@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-// Используем ленивую загрузку для лучшей производительности
 const routes = [
     {
         path: '/',

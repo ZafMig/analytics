@@ -90,8 +90,8 @@ const handleFiltersChange = (newFilters) => {
 
 watch(apiData, (newData) => {
   if (newData.length > 0) {
-    console.log('📊 Sales data structure:', newData[0])
-    console.log('🔑 Sales available keys:', Object.keys(newData[0]))
+    console.log('data structure:', newData[0])
+    console.log('available keys:', Object.keys(newData[0]))
   }
 })
 
@@ -125,11 +125,11 @@ onMounted(fetchData)
   gap: 2rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
-  justify-content: center; /* чтобы красиво выравнивалось */
+  justify-content: center;
 }
 
 .stat-item {
-  flex: 1 1 200px; /* гибкая ширина */
+  flex: 1 1 200px;
   max-width: 250px;
   background: #ffffff;
   padding: 1.5rem;

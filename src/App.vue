@@ -26,10 +26,10 @@ const route = useRoute()
 
 <style>
 .main-nav {
-  background: #2c3e50; /* тёмный фон */
+  background: #2c3e50;
   padding: 0.8rem 1rem;
   color: white;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* лёгкая тень */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -58,7 +58,7 @@ const route = useRoute()
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-.nav-links a.router-link-active {
+.nav-links a {
   background: #3498db;
   color: #fff;
 }
@@ -71,12 +71,5 @@ const route = useRoute()
   padding: 2rem;
 
   margin: 0 auto;
-}
-
-.page {
-  padding: 1.5rem;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 </style>

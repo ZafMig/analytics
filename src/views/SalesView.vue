@@ -61,7 +61,8 @@ import { useApiStore } from '../stores/apiStore'
 import FiltersPanel from '../components/FiltersPanel.vue'
 import ChartDisplay from '../components/ChartDisplay.vue'
 import DataTable from '../components/DataTable.vue'
-import PaginationControls from '../components/PaginationControls.vue'
+import PaginationControls from "../components/PaginationControls.vue";
+
 
 const endpoint = 'sales'
 const store = useApiStore()
@@ -79,7 +80,7 @@ const totalItems = computed(() => store.totalItems)
 const itemsPerPage = computed(() => store.itemsPerPage)
 
 
-// Статистика продаж на основе реальных полей
+// Статистика продаж
 const totalSales = computed(() => apiData.value.length)
 const totalRevenue = computed(() =>
     apiData.value.reduce((sum, sale) => sum + (Number(sale.for_pay) || 0), 0)
@@ -121,15 +122,15 @@ const fetchData = () => {
 // Отладка структуры данных
 watch(apiData, (newData) => {
   if (newData.length > 0) {
-    console.log('📊 Sales data structure:', newData[0])
-    console.log('🔑 Sales available keys:', Object.keys(newData[0]))
+    console.log('data structure:', newData[0])
+    console.log('available keys:', Object.keys(newData[0]))
   }
 })
 
 onMounted(() => {
-  console.log('📍 SalesView mounted')
+  console.log('SalesView mounted')
 
-  // Устанавливаем даты по умолчанию: последние 7 дней
+  //Даты по умолчанию последние 7 дней
   const today = new Date()
   const weekAgo = new Date()
   weekAgo.setDate(today.getDate() - 7)
@@ -137,7 +138,7 @@ onMounted(() => {
   filters.value.dateFrom = weekAgo.toISOString().split('T')[0]
   filters.value.dateTo = today.toISOString().split('T')[0]
 
-  console.log('📅 Default dates:', filters.value)
+  console.log('Default dates:', filters.value)
   fetchData()
 })
 </script>

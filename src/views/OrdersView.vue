@@ -67,7 +67,7 @@ const filters = ref({
   limit: 50
 })
 
-// Безопасные computed свойства
+
 const apiData = computed(() => store.data || [])
 const loading = computed(() => store.loading)
 const error = computed(() => store.error)
@@ -110,19 +110,19 @@ const handleItemsPerPageChange = (limit) => {
 }
 
 const fetchData = () => {
-  console.log('🚀 Fetching orders with filters:', filters.value)
+  console.log(' Fetching orders with filters:', filters.value)
   store.fetchEndpointData(endpoint, filters.value)
 }
 
 watch(apiData, (newData) => {
   if (newData.length > 0) {
-    console.log('📊 Sales data structure:', newData[0])
-    console.log('🔑 Sales available keys:', Object.keys(newData[0]))
+    console.log('data structure:', newData[0])
+    console.log('available keys:', Object.keys(newData[0]))
   }
 })
 
 onMounted(() => {
-  console.log('📍 OrdersView mounted')
+  console.log('OrdersView mounted')
 
   const today = new Date()
   const monthAgo = new Date()
@@ -131,7 +131,7 @@ onMounted(() => {
   filters.value.dateFrom = monthAgo.toISOString().split('T')[0]
   filters.value.dateTo = today.toISOString().split('T')[0]
 
-  console.log('📅 Default dates:', filters.value)
+  console.log('Default dates:', filters.value)
   fetchData()
 })
 </script>
@@ -207,16 +207,16 @@ onMounted(() => {
   font-weight: 500;
 }
 
-/* Цвет для отрицательных и положительных значений */
-.stat-percent.negative {
+
+.stat-percent {
   color: #e74c3c;
 }
 
-.stat-percent.positive {
+.stat-percent {
   color: #27ae60;
 }
 
-/* Акцентные линии сверху */
+
 .stat-card:nth-child(2) {
   border-top: 4px solid #e74c3c;
 }
