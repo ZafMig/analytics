@@ -27,4 +27,6 @@ npm run dev
 ```sh
 npm run build
 ```
+### Ссылка на развернутое приложение
 
+https://fascinating-gelato-bd0b57.netlify.app/sales
