@@ -2,7 +2,8 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 import axios from "axios";
 
-const API_BASE_URL = 'http://109.73.206.144:6969'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+
 const API_KEY = 'E6kUTYrYwZq2tN4QEtyzsbEBk3ie'
 
 export const useApiStore = defineStore('api', () => {
